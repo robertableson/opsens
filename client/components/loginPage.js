@@ -2,46 +2,21 @@ import React from 'react';
 
 const LoginPage = () =>{
   return(
-    <div className="loginForm">
+    <div>
 
-          <div className="panel-heading">
-             <div className="panel-title text-center">
-                <h1 className="title">Company Name</h1>
-              </div>
-          </div>
 
-          <div className="main-login main-center">
-            <form className="form-horizontal" method="post" action="#">
-
-              <div className="form-group">
-                <div className="col-sm-10">
-                  <div className="input-group login-input">
-                    <input type="text" className="form-control" name="name" id="name"
-                      placeholder="Identifiant"/>
-                  </div>
-                </div>
-              </div>
-
-              <div className="form-group">
-                <div className="col-sm-10">
-                  <div className="input-group login-input">
-                    <input type="text" className="form-control" name="name" id="name"
-                      placeholder="Mot de passe"/>
-                  </div>
-                </div>
-              </div>
-
-              <div className="form-group ">
-                <button type="button"
-                  className="btn btn-primary btn-lg btn-block login-button">
-                  Se connecter
-                </button>
-              </div>
-              <div className="login-register">
-                <a href="index.php">Créer un nouveau compte</a>
-              </div>
-            </form>
-          </div>
+      <form className="form-signin">
+        <h2 className="form-signin-heading">Identification</h2>
+        <label htmlFor="inputEmail" className="sr-only">Identifiant</label>
+        <input type="email" id="inputEmail" className="form-control"
+        placeholder="Email address" required autoFocus/>
+        <br/>
+        <label htmlFor="inputPassword" className="sr-only">Password</label>
+        <input type="password" id="inputPassword" className="form-control"
+        placeholder="Password" required/>
+        <br/>
+        <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+     </form>
 
     </div>
   );

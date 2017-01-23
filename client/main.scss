@@ -27,3 +27,13 @@ $primaryColorActive: $primaryColor - #111;
     }
   }
 }
+
+//inputs ----------------------------------------------------------------------
+.form-signin{
+  max-width: 300px;
+  margin: 0 auto;
+
+  & > input{
+    border-radius: 0;
+  }
+}
