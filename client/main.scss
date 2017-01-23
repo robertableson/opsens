@@ -1,0 +1,29 @@
+$primaryColor: #f47a20;
+$primaryColorHover: $primaryColor + #111;
+$primaryColorActive: $primaryColor - #111;
+
+
+//buttons ----------------------------------------------------------------------
+.btn{
+  border-radius: 0;
+
+  //primary
+  &.btn-primary{
+    background-color: $primaryColor;
+    border-color: $primaryColor;
+    border-radius: 0;
+
+    &:hover{
+      background-color: $primaryColorHover;
+      border-color: $primaryColorHover;
+    }
+    &:active{
+      background-color: $primaryColorActive;
+      border-color: $primaryColorActive;
+      outline: none;
+    }
+    &:focus{
+      outline: none;
+    }
+  }
+}

@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import LoginPage from './components/loginPage';
+import HomeActionsPage from './components/homeActionsPage';
+
 const App = () => {
   return(
-    <div>
-      test
+    <div className="container">
+      <LoginPage/>
+      <HomeActionsPage/>
     </div>
   );
 };
