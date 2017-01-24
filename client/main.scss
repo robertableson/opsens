@@ -1,7 +1,16 @@
+$backgroundColor: #f1f1f1;
+
 $primaryColor: #f47a20;
 $primaryColorHover: $primaryColor + #111;
 $primaryColorActive: $primaryColor - #111;
 
+$cardDropShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+
+body{
+  background-color: $backgroundColor;
+}
 
 //buttons ----------------------------------------------------------------------
 .btn{
@@ -28,12 +37,23 @@ $primaryColorActive: $primaryColor - #111;
   }
 }
 
-//inputs ----------------------------------------------------------------------
+//login form ----------------------------------------------------------------------
 .form-signin{
   max-width: 300px;
   margin: 0 auto;
+  margin-top:100px;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: $cardDropShadow;
 
   & > input{
     border-radius: 0;
+  }
+  .loginLogo{
+    width:200px;
+  }
+  .signupLink{
+    text-align: center;
+    padding-top: 5px;
   }
 }

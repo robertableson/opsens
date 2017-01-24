@@ -4,19 +4,22 @@ const LoginPage = () =>{
   return(
     <div>
 
-
       <form className="form-signin">
-        <h2 className="form-signin-heading">Identification</h2>
-        <label htmlFor="inputEmail" className="sr-only">Identifiant</label>
-        <input type="email" id="inputEmail" className="form-control"
-        placeholder="Email address" required autoFocus/>
+        <div className="text-center">
+          <img className="loginLogo mx-auto d-block" src="logo.png"/>
+        </div>
         <br/>
-        <label htmlFor="inputPassword" className="sr-only">Password</label>
+        <input type="text" id="inputUsername" className="form-control"
+        placeholder="Identifiant" required autoFocus/>
+        <br/>
         <input type="password" id="inputPassword" className="form-control"
-        placeholder="Password" required/>
+        placeholder="Mot de passe" required/>
         <br/>
-        <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-     </form>
+        <button className="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+        <div className="signupLink">
+          <a href="#">Créer un compte</a>
+        </div>
+      </form>
 
     </div>
   );
