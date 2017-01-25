@@ -6,7 +6,7 @@ import HomeActionsPage from './homeActionsPage';
 
 class HomePage extends Component{
   componentWillMount(){
-    if(Meteor.user()){
+    if(!Meteor.user()){
       browserHistory.push(`connexion`);
     }
   }

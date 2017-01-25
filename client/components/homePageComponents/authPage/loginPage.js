@@ -4,7 +4,13 @@ import {Link, browserHistory} from 'react-router';
  class LoginPage extends Component{
   login(event){
     event.preventDefault();
-    browserHistory.push(`/`);
+
+    const loginId = this.refs.loginId.value;
+    const loginPassword = this.refs.loginPassword.value;
+
+    console.log(`id: ${loginId} pwd: ${loginPassword}`);
+
+    //browserHistory.push(`/`);
   }
   createNew(event){
     event.preventDefault();
@@ -15,13 +21,13 @@ import {Link, browserHistory} from 'react-router';
     return(
       <form className="form-signin" onSubmit={this.login.bind(this)}>
         <div className="text-center">
-        <img className="loginLogo mx-auto d-block" src="logo.png"/>
+          <img className="loginLogo mx-auto d-block" src="logo.png"/>
         </div>
         <br/>
-        <input type="text" id="inputUsername" className="form-control"
-        placeholder="Identifiant" autoFocus/>
+        <input ref="loginId" type="text" id="inputUsername" className="form-control"
+        placeholder="Identifiant (prenom.nom)" autoFocus/>
         <br/>
-        <input type="password" id="inputPassword" className="form-control"
+        <input ref="loginPassword" type="password" id="inputPassword" className="form-control"
         placeholder="Mot de passe"/>
         <br/>
         <button className="btn btn-lg btn-primary btn-block">Se connecter</button>
