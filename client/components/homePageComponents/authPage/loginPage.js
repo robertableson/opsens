@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
 import {Link, browserHistory} from 'react-router';
 
- class LoginPage extends Component{
+class LoginPage extends Component{
+  checkInfo(id, pwd){
+
+  console.log(`id: ${id} pwd: ${pwd}`);
+
+  }
+
   login(event){
     event.preventDefault();
 
-    const loginId = this.refs.loginId.value;
+    const loginId = (this.refs.loginId.value).toLowerCase();
     const loginPassword = this.refs.loginPassword.value;
 
-    console.log(`id: ${loginId} pwd: ${loginPassword}`);
+    this.checkInfo(loginId, loginPassword);
 
     //browserHistory.push(`/`);
   }
-  createNew(event){
+  goRegisterPage(event){
     event.preventDefault();
     browserHistory.push(`nouveau-compte`); //navigate to url
   }
@@ -32,7 +38,7 @@ import {Link, browserHistory} from 'react-router';
         <br/>
         <button className="btn btn-lg btn-primary btn-block">Se connecter</button>
         <div className="signupLink">
-          <a href="#" onClick={this.createNew.bind(this)}>Créer un compte</a>
+          <a href="#" onClick={this.goRegisterPage.bind(this)}>Créer un compte</a>
         </div>
       </form>
     );
