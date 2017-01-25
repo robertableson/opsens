@@ -4,12 +4,10 @@ import {Link, browserHistory} from 'react-router';
  class LoginPage extends Component{
   login(event){
     event.preventDefault();
-
-    browserHistory.push(`/`); //navigate to url
+    browserHistory.push(`/`);
   }
   createNew(event){
     event.preventDefault();
-
     browserHistory.push(`nouveau-compte`); //navigate to url
   }
 
