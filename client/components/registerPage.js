@@ -5,12 +5,13 @@ import {Link, browserHistory} from 'react-router';
   login(event){
     event.preventDefault();
 
-    browserHistory.push(`/`); //navigate to url
+    console.log("login");
+
   }
   createNew(event){
     event.preventDefault();
 
-    browserHistory.push(`nouveau-compte`); //navigate to url
+    browserHistory.push(`connexion`); //navigate to url
   }
 
   render(){
@@ -26,9 +27,12 @@ import {Link, browserHistory} from 'react-router';
         <input type="password" id="inputPassword" className="form-control"
         placeholder="Mot de passe"/>
         <br/>
-        <button className="btn btn-lg btn-primary btn-block">Se connecter</button>
+        <input type="password" id="inputPassword" className="form-control"
+        placeholder="Confirmer mot de passe"/>
+        <br/>
+        <button className="btn btn-lg btn-primary btn-block">Créer compte</button>
         <div className="signupLink">
-          <a href="#" onClick={this.createNew.bind(this)}>Créer un compte</a>
+          <a href="#" onClick={this.createNew.bind(this)}>Se connecter</a>
         </div>
       </form>
     );
