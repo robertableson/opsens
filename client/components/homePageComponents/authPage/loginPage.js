@@ -1,23 +1,50 @@
 import React, {Component} from 'react';
 import {Link, browserHistory} from 'react-router';
+import {createContainer} from 'meteor/react-meteor-data';
 
 class LoginPage extends Component{
-  checkInfo(id, pwd){
+  constructor(props){
+    super(props);
+    this.state = {message: '', messageType: "alert alert-danger"};
+  }
 
-  console.log(`id: ${id} pwd: ${pwd}`);
+  validateLoginInfo(id, pwd){
+    var valid = false;
 
+    if(id.length < 8){
+      this.setState({
+        message: "L'identifiant doit avoir un minimum de 8 caractères.",
+        messageType: "alert alert-danger"});
+    }else if(pwd.length < 6){
+      this.setState({
+        message: "Le mot de passe doit avoir un minimum de 6 caractères.",
+        messageType: "alert alert-danger"});
+    }else{
+      this.setState({message: "<div>Loading...</div>", messageType: "alert alert-info"});
+      valid = true;
+    }
+
+    return valid;
   }
 
   login(event){
     event.preventDefault();
 
-    const loginId = (this.refs.loginId.value).toLowerCase();
-    const loginPassword = this.refs.loginPassword.value;
+    const id = this.refs.loginId.value;
+    const pwd = this.refs.loginPassword.value;
 
-    this.checkInfo(loginId, loginPassword);
-
-    //browserHistory.push(`/`);
+    if(this.validateLoginInfo(id, pwd)){
+      Meteor.loginWithPassword(id, pwd, (err) => {
+        if(err){
+          this.setState({message: err.reason,
+            messageType: "alert alert-danger"});
+        }else{
+          console.log("success login!!!!!!!!!");
+        }
+      });
+    }
   }
+
   goRegisterPage(event){
     event.preventDefault();
     browserHistory.push(`nouveau-compte`); //navigate to url
@@ -30,6 +57,11 @@ class LoginPage extends Component{
           <img className="loginLogo mx-auto d-block" src="logo.png"/>
         </div>
         <br/>
+        {this.state.message !== '' ?
+          <div className={this.state.messageType}>
+            {this.state.message}
+          </div>
+        : null}
         <input ref="loginId" type="text" id="inputUsername" className="form-control"
         placeholder="Identifiant (prenom.nom)" autoFocus/>
         <br/>
@@ -44,5 +76,7 @@ class LoginPage extends Component{
     );
   }
 }
+
+//export default LoginPage;
 
 export default LoginPage;
