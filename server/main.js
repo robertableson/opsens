@@ -10,8 +10,25 @@ Meteor.startup(() => {
    */
 
   Accounts.onCreateUser(function(options, user) {
-    console.log("user: %j", user);
-    console.log("options: %j", options);
+    if(!options.firstName || options.firstName.length < 2
+      || options.firstName.length > 20){
+      throw new Meteor.Error(
+        "first-name-invalid-length",
+        "Le prénom doit avoir entre 2 et 20 caractères.");
+    }else if(!options.lastName || options.lastName.length < 2
+      || options.lastName.length > 20){
+        throw new Meteor.Error(
+          "first-name-invalid-length",
+          "Le nom doit avoir entre 2 et 20 caractères.");
+    }
+
+    const fName = options.firstName.toLowerCase();
+    const lName = options.lastName.toLowerCase();
+
+    user.username = `${fName}.${lName}`;
+    user.profile = {firstName: fName, lastName: lName};
+
+    return user;
   });
 
   /*Accounts.validateNewUser(function (user) {
@@ -29,7 +46,6 @@ Meteor.startup(() => {
   });*/
 
   Accounts.validateLoginAttempt(function(attempt){
-    console.log("validateLogin-----------------------------------------------");
     //if user is registering
     if(attempt.methodName === "createUser"){
       //if error in registration
@@ -37,23 +53,28 @@ Meteor.startup(() => {
         var reason = attempt.error.reason;
 
         if (reason === "Need to set a username or email"){
-          throw new Meteor.Error("empty-id",
+          throw new Meteor.Error(
+            "empty-id",
             "Veuillez saisir un identifiant.");
         }else if(reason === "Username already exists."){
-          throw new Meteor.Error("id-exists",
+          throw new Meteor.Error(
+            "id-exists-already",
             "Désolé, cet utilisateur existe déjà.");
         }else if(reason === "Password may not be empty"){
           throw new Meteor.Error(
-            "empty-pwd", "Veuillez saisir un mot de passe.");
+            "empty-password",
+            "Veuillez saisir un mot de passe.");
         }else{
           throw new Meteor.Error(
-            "id-length-error", reason);
+            "username-length",
+            reason);
         }
       }else{
         throw new Meteor.Error(
-          "id-length-error", "Votre compte a été créé avec succès! Vous " +
+          "register-success",
+          "Votre compte a été créé avec succès! Vous " +
           "pourrez vous connecter lorsqu'un adminstrateur du système " +
-          "acceptera votre demande.");
+          "aura accepté votre demande.");
       }
     }
     //if user is trying to log in
@@ -61,16 +82,20 @@ Meteor.startup(() => {
       if(attempt.error){
         var reason = attempt.error.reason;
         if (reason === "User not found"){
-          throw new Meteor.Error("id-not-found",
+          throw new Meteor.Error(
+            "username-not-found",
             "Cet identifiant n'existe pas. Vous pouvez créer un compte avec " +
-            "le lien plus bas.");
+            "le lien ci-dessous.");
         }else if (reason === "Incorrect password"){
-          throw new Meteor.Error("incorrect-password",
+          throw new Meteor.Error(
+            "incorrect-password",
             "Le mot de passe ne correspont pas à cet identifiant.");
         }
       }
-      else if(attempt.user && !attempt.user.profile){
-        throw new Meteor.Error("user-not-validated-yet",
+      else if(attempt.user && attempt.user.profile &&
+        !attempt.user.profile.userType){
+        throw new Meteor.Error(
+          "user-not-validated-yet",
           "Votre compte est en attente de validation " +
           "par un administrateur du système.");
       }

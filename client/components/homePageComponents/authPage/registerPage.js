@@ -10,12 +10,16 @@ class LoginPage extends Component{
       messageType: "alert alert-info"};
   }
 
-  validateRegisterInfo(id, pwd, pwdConf){
+  validateRegisterInfo(fName, lName, pwd, pwdConf){
     var valid = false;
 
-    if(id.length < 8 || id.length > 30){
+    if(fName.length < 2 || fName.length > 20){
       this.setState({
-        message: "L'identifiant doit avoir entre 8 et 30 caractères.",
+        message: "Le champ 'Prénom' doit contenir entre 2 et 20 caractères.",
+        messageType: "alert alert-danger"});
+    }if(lName.length < 2 || lName.length > 20){
+      this.setState({
+        message: "Le champ 'Nom' doit contenir entre 2 et 20 caractères.",
         messageType: "alert alert-danger"});
     }else if(pwd.length < 6 || pwd.length > 20){
       this.setState({
@@ -27,7 +31,7 @@ class LoginPage extends Component{
         messageType: "alert alert-danger"});
     }else{
       this.setState({
-        message: "loading...",
+        message: "Loading...",
         messageType: "alert alert-info"});
       valid = true;
     }
@@ -38,16 +42,27 @@ class LoginPage extends Component{
   register(event){
     event.preventDefault();
 
-    const userId = this.refs.loginId.value;
+    const userFirstName = this.refs.userFirstName.value;
+    const userLastName = this.refs.userLastName.value;
     const userPassword = this.refs.loginPassword.value;
     const userPasswordConfirm = this.refs.loginPasswordConfirm.value;
 
-    if(this.validateRegisterInfo(userId, userPassword, userPasswordConfirm)){
-      Accounts.createUser({username: userId, password: userPassword}, (msg) => {
+    if(this.validateRegisterInfo(userFirstName, userLastName, userPassword,
+      userPasswordConfirm)){
+      Accounts.createUser({username: "default", password: userPassword,
+        firstName: userFirstName, lastName: userLastName}, (msg) => {
         if(msg){
-          this.setState({
-            message: msg.reason,
-            messageType: "alert alert-success"});
+          console.log(msg);
+          if(msg.error !== "id-exists-already"){
+            this.setState({
+              message: msg.reason,
+              messageType: "alert alert-success"});
+          }else{
+            this.setState({
+              message: msg.reason,
+              messageType: "alert alert-danger"});
+          }
+
         }else{
           this.setState({
             message: msg.reason,
@@ -72,8 +87,11 @@ class LoginPage extends Component{
         <div className={this.state.messageType}>
           {this.state.message}
         </div>
-        <input ref="loginId" type="text" id="inputUsername" className="form-control"
-        placeholder="Identifiant (prenom.nom)" autoFocus/>
+        <input ref="userFirstName" type="text" id="inputUsername" className="form-control"
+        placeholder="Prénom" autoFocus/>
+        <br/>
+        <input ref="userLastName" type="text" id="inputUsername" className="form-control"
+        placeholder="Nom" autoFocus/>
         <br/>
         <input ref="loginPassword" type="password" id="inputPassword" className="form-control"
         placeholder="Mot de passe"/>

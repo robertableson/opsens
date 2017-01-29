@@ -11,16 +11,16 @@ class LoginPage extends Component{
   validateLoginInfo(id, pwd){
     var valid = false;
 
-    if(id.length < 8){
+    if(id.length < 5 || id.length > 41){
       this.setState({
-        message: "L'identifiant doit avoir un minimum de 8 caractères.",
+        message: "L'identifiant doit avoir entre 5 et 41 caractères.",
         messageType: "alert alert-danger"});
-    }else if(pwd.length < 6){
+    }else if(pwd.length < 6 || pwd.length > 20){
       this.setState({
-        message: "Le mot de passe doit avoir un minimum de 6 caractères.",
+        message: "Le mot de passe doit avoir entre 6 et 20 caractères.",
         messageType: "alert alert-danger"});
     }else{
-      this.setState({message: "<div>Loading...</div>", messageType: "alert alert-info"});
+      this.setState({message: "Loading...", messageType: "alert alert-info"});
       valid = true;
     }
 
