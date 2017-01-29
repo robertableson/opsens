@@ -46,6 +46,7 @@ Meteor.startup(() => {
   });*/
 
   Accounts.validateLoginAttempt(function(attempt){
+    console.log(attempt);
     //if user is registering
     if(attempt.methodName === "createUser"){
       //if error in registration
@@ -74,7 +75,8 @@ Meteor.startup(() => {
           "register-success",
           "Votre compte a été créé avec succès! Vous " +
           "pourrez vous connecter lorsqu'un adminstrateur du système " +
-          "aura accepté votre demande.");
+          "aura accepté votre demande. Voici votre identifiant: " +
+          `${attempt.user.profile.firstName}.${attempt.user.profile.lastName}.`);
       }
     }
     //if user is trying to log in
