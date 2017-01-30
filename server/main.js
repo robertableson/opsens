@@ -1,6 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
+
+
+  
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@ LOGIN / REGISTRATION VALIDATIONS @@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -8,7 +11,6 @@ Meteor.startup(() => {
    *  salted, even if it is inserted through the developer console with a length
    *  of <8 chars
    */
-
   Accounts.onCreateUser(function(options, user) {
     if(!options.firstName || options.firstName.length < 2
       || options.firstName.length > 20){
@@ -30,20 +32,6 @@ Meteor.startup(() => {
 
     return user;
   });
-
-  /*Accounts.validateNewUser(function (user) {
-    console.log("new user?---------------------------------------------");
-    console.log(user);
-    console.log("allo");
-    if(!user.username || user.username.length < 8
-      || user.username.length > 30){
-      throw new Meteor.Error("id-invalid-length",
-        "L'identifiant doit avoir entre 8 et 30 caractères.");
-      return false;
-    }
-
-    return true;
-  });*/
 
   Accounts.validateLoginAttempt(function(attempt){
     console.log(attempt);

@@ -2,17 +2,24 @@ import React, {Component} from 'react';
 import { Meteor } from 'meteor/meteor';
 import {Link, browserHistory} from 'react-router';
 
+
 import HomeActionsPage from './homeActionsPage';
+import Header from '../header/header';
 
 class HomePage extends Component{
   componentWillMount(){
-    if(!Meteor.user()){
+    if(Meteor.user()){
       browserHistory.push(`connexion`);
     }
   }
 
   render(){
-    return(<HomeActionsPage/>);
+    return(
+      <div>
+        <Header/>
+        <HomeActionsPage/>
+      </div>
+    );
   }
 }
 
