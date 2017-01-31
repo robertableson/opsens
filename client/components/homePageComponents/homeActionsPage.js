@@ -1,10 +1,10 @@
 import React from 'react';
 
+import ActionMenu from './actionMenu';
+
 const HomeActionsPage = () =>{
   return(
-    <div>
-      HomeActionsPage component
-    </div>
+    <ActionMenu/>
   );
 }
 

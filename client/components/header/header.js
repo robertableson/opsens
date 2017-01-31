@@ -28,10 +28,10 @@ class Header extends Component{
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a href="full-width.html">Allo</a>
+                    <a href="full-width.html">Gestion de mon compte</a>
                   </li>
                   <li>
-                    <a href="sidebar.html">Allo</a>
+                    <a href="sidebar.html">Me déconnecter</a>
                   </li>
                 </ul>
               </li>

@@ -8,6 +8,7 @@ $cardDropShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19
 
 $navbarHeight: 80px;
 $navbarLogoPadding: (50px-$navbarHeight)/2 0 (50px-$navbarHeight)/2 0 ;
+$navbarRightMargin: 10px 0 0 0;
 
 
 
@@ -70,11 +71,50 @@ body{
   background-color: #e1e1e1;
   height:$navbarHeight;
   .navbar-brand{
-    padding: $navbarLogoPadding
+    padding: $navbarLogoPadding;
   }
-  .navbar-collapse{
-    a{
-      font-size: 25px;
+  .navbar-right{
+    font-size: 20px;
+    margin: $navbarRightMargin;
+
+    &:hover{
+      background-color: #e9e9e9;
+    }
+
+    ul.dropdown-menu{
+      margin-top:18px;
+      background-color: white;
+      border: 1px solid #e9e9e9;
+    }
+  }
+}
+
+.row{
+  margin-top: 50px;
+
+  a{
+    text-decoration: none;
+  }
+
+  .col-sm-4{
+    text-align: center;
+
+    .menuAction{
+      padding: 20px 10px 0 10px;
+      background-color: #f47a20;
+      font-size: 35px;
+      color:white;
+      transition: background-color 0.5s;
+
+      &:hover{
+        background-color: #e76200;
+        transition: background-color 0.5s;
+      }
+
+
+      .menuActionText{
+        margin-top: 25px;
+      }
     }
   }
 }
