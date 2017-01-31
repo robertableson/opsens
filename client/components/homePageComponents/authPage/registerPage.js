@@ -74,7 +74,7 @@ class LoginPage extends Component{
 
   goLoginPage(event){
     event.preventDefault();
-    browserHistory.push(`connexion`); //navigate to url
+    browserHistory.push('connexion'); //navigate to url
   }
 
   render(){

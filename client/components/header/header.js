@@ -24,7 +24,7 @@ class Header extends Component{
             <ul className="nav navbar-nav navbar-right">{/*  */}
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                  Robert Ableson <b className="caret"></b>
+                  {Meteor.user()} <b className="caret"></b>
                 </a>
                 <ul className="dropdown-menu">
                   <li>

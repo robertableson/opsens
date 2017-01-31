@@ -1,14 +1,14 @@
 import {Mongo} from "meteor/mongo";
 
-/*Meteor.methods({
-  'menuActions.getCorresponding': function(userType){
-    return Bins.insert({
-      createdAt: new Date(),
-      content: '',
-      sharedWith: [],
-      ownerId: this.userId
+Meteor.methods({
+  'menuActions.insert': function(userType, title, route, orderNo){
+    return MenuActions.insert({
+      user_userType: userType,
+			title: title,
+			route: route,
+      orderNo: orderNo
     });
-  }'
+  }
 });
 
-export const MenuActions = new Mongo.Collection('menuActions');*/
+export const MenuActions = new Mongo.Collection('menuActions');

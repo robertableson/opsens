@@ -8,8 +8,8 @@ import Header from '../header/header';
 
 class HomePage extends Component{
   componentWillMount(){
-    if(Meteor.user()){
-      browserHistory.push(`connexion`);
+    if(!Meteor.user()){
+      browserHistory.push('connexion');
     }
   }
 

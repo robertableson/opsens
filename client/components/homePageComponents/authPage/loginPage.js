@@ -40,6 +40,7 @@ class LoginPage extends Component{
             messageType: "alert alert-danger"});
         }else{
           console.log("success login!!!!!!!!!");
+          window.location = "http://localhost:3000";
         }
       });
     }
@@ -47,7 +48,7 @@ class LoginPage extends Component{
 
   goRegisterPage(event){
     event.preventDefault();
-    browserHistory.push(`nouveau-compte`); //navigate to url
+    browserHistory.push('nouveau-compte'); //navigate to url
   }
 
   render(){

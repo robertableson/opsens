@@ -1,10 +1,32 @@
 import { Meteor } from 'meteor/meteor';
 
+import {menuActions} from '../imports/collections/menuActions';
+
 Meteor.startup(() => {
+  /*Meteor.publish('menuActions',function(){
+
+  });*/
+
+console.log(this.user);
 
 
-  
-  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+  //init of menu
+  /*Meteor.call('menuActions.insert', ["admin"], "Instructions de travail",
+    "gestionit", 1);
+  Meteor.call('menuActions.insert', ["admin"], "Produits",
+    "gestionit", 2);
+  Meteor.call('menuActions.insert', ["admin"], "Utilisateurs",
+    "gestionit", 3);
+  Meteor.call('menuActions.insert', ["admin"], "Privilèges du menu",
+    "gestionit", 4);
+  Meteor.call('menuActions.insert', ["admin"], "Commandes",
+    "gestionit", 5);
+  Meteor.call('menuActions.insert', ["admin"], "Production",
+    "gestionit", 6);*/
+
+  //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@ LOGIN / REGISTRATION VALIDATIONS @@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   /*  No need to check password field of user as it is automaticallly hashed and
