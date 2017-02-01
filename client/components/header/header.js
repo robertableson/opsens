@@ -1,33 +1,26 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
+import {createContainer} from 'meteor/react-meteor-data';
 
 class Header extends Component{
   constructor(){
     super();
-    this.state = {fName: "", lName: ""};
+    this.state = {firstName: "", lastName: ""}
   }
 
-  componentDidMount(){
-    console.log("component did mount");
+  namesToUpper(){
+    if(this.props.currentUser){
+      var fn = this.props.currentUser.profile.firstName;
+      var ln = this.props.currentUser.profile.lastName;
+      fn = fn.substr(0, 1).toUpperCase() + fn.substr(1);
+      ln = ln.substr(0, 1).toUpperCase() + ln.substr(1)
 
-    Meteor.autorun(() => {
-      if(Meteor.user()){
-        var fn = Meteor.user().profile.firstName;
-        var ln = Meteor.user().profile.lastName;
-        fn = fn.substr(0, 1).toUpperCase() + fn.substr(1);
-        ln = ln.substr(0, 1).toUpperCase() + ln.substr(1)
-
-        this.setState({
-          fName: fn,
-          lName: ln
-        });
-      }
-    });
+      return({firstName: fn, lastName: ln});
+    }else{
+      return("nothing");
+    }
   }
 
-  componentWillUnmount(){
-    console.log("compoennt will unmount");
-  }
 
   logoClick(){
     browserHistory.push('menu');
@@ -40,6 +33,7 @@ class Header extends Component{
   }
 
   render(){
+    const currentUser = this.namesToUpper();
     return(
       <nav className="navbar navbar-default">
         <div className="container">
@@ -61,7 +55,7 @@ class Header extends Component{
             <ul className="nav navbar-nav navbar-right">{/*  */}
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                  {this.state.fName} {this.state.lName} <b className="caret"></b>
+                  {currentUser.firstName} {currentUser.lastName} <b className="caret"></b>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
@@ -88,4 +82,11 @@ class Header extends Component{
   }
 }
 
-export default Header;
+export default createContainer(() =>{
+  return {currentUser: Meteor.user()};
+}, Header);
+
+/*var fn = Meteor.user().profile.firstName;
+var ln = Meteor.user().profile.lastName;
+fn = fn.substr(0, 1).toUpperCase() + fn.substr(1);
+ln = ln.substr(0, 1).toUpperCase() + ln.substr(1)*/
