@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
 import {createContainer} from 'meteor/react-meteor-data';
+import Spinner from '../spinner';
 
 class Header extends Component{
   constructor(){
@@ -17,7 +18,7 @@ class Header extends Component{
 
       return({firstName: fn, lastName: ln});
     }else{
-      return("nothing");
+      return({}); //ReactDOM.render(<App/>, document.querySelector('.render-target'));
     }
   }
 
@@ -55,7 +56,9 @@ class Header extends Component{
             <ul className="nav navbar-nav navbar-right">{/*  */}
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                  {currentUser.firstName} {currentUser.lastName} <b className="caret"></b>
+                  {currentUser.firstName ?
+                      `${currentUser.firstName} ${currentUser.lastName} `
+                      : <Spinner/>} <b className="caret"></b>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
