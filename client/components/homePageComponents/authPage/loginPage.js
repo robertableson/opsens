@@ -8,6 +8,16 @@ class LoginPage extends Component{
     this.state = {message: '', messageType: "alert alert-danger"};
   }
 
+  componentWillMount(){
+    if(Meteor.userId()){
+      browserHistory.push('menu');
+    }
+  }
+  
+  componentWillUnmount(){
+    console.log("login unmount");
+  }
+
   validateLoginInfo(id, pwd){
     var valid = false;
 
@@ -39,8 +49,7 @@ class LoginPage extends Component{
           this.setState({message: err.reason,
             messageType: "alert alert-danger"});
         }else{
-          console.log("success login!!!!!!!!!");
-          window.location = "http://localhost:3000";
+          browserHistory.push('menu');
         }
       });
     }

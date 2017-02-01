@@ -1,8 +1,45 @@
 import React, {Component} from 'react';
+import {browserHistory} from 'react-router';
 
 class Header extends Component{
-  render(){
+  constructor(){
+    super();
+    this.state = {fName: "", lName: ""};
+  }
 
+  componentDidMount(){
+    console.log("component did mount");
+
+    Meteor.autorun(() => {
+      if(Meteor.user()){
+        var fn = Meteor.user().profile.firstName;
+        var ln = Meteor.user().profile.lastName;
+        fn = fn.substr(0, 1).toUpperCase() + fn.substr(1);
+        ln = ln.substr(0, 1).toUpperCase() + ln.substr(1)
+
+        this.setState({
+          fName: fn,
+          lName: ln
+        });
+      }
+    });
+  }
+
+  componentWillUnmount(){
+    console.log("compoennt will unmount");
+  }
+
+  logoClick(){
+    browserHistory.push('menu');
+  }
+
+  logout(){
+    Meteor.logout(function(){
+      browserHistory.push('connexion');
+    });
+  }
+
+  render(){
     return(
       <nav className="navbar navbar-default">
         <div className="container">
@@ -15,7 +52,7 @@ class Header extends Component{
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">
+            <a onClick={this.logoClick.bind(this)} className="navbar-brand" href="#">
               <img className="navbarLogo" src="navbarLogo.png"/>
             </a>
           </div>
@@ -24,14 +61,22 @@ class Header extends Component{
             <ul className="nav navbar-nav navbar-right">{/*  */}
               <li className="dropdown">
                 <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-                  {Meteor.user()} <b className="caret"></b>
+                  {this.state.fName} {this.state.lName} <b className="caret"></b>
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a href="full-width.html">Gestion de mon compte</a>
+                    <a href="full-width.html">
+                      <span className="glyphicon glyphicon-cog" aria-hidden="true">
+                      </span>
+                      Gestion de mon compte
+                    </a>
                   </li>
                   <li>
-                    <a href="sidebar.html">Me déconnecter</a>
+                    <a onClick={this.logout.bind(this)} href="#">
+                      <span className="glyphicon glyphicon-log-out" aria-hidden="true">
+                      </span>
+                      Me déconnecter
+                    </a>
                   </li>
                 </ul>
               </li>

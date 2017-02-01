@@ -10,6 +10,12 @@ class LoginPage extends Component{
       messageType: "alert alert-info"};
   }
 
+  componentWillMount(){
+    if(Meteor.userId()){
+      browserHistory.push('menu');
+    }
+  }
+
   validateRegisterInfo(fName, lName, pwd, pwdConf){
     var valid = false;
 

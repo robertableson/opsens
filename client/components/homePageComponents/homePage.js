@@ -8,19 +8,13 @@ import Header from '../header/header';
 
 class HomePage extends Component{
   componentWillMount(){
-    if(!Meteor.user()){
+    if(!Meteor.userId()){
       browserHistory.push('connexion');
+    }else{
+      browserHistory.push('menu');
     }
   }
-
-  render(){
-    return(
-      <div>
-        <Header/>
-        <HomeActionsPage/>
-      </div>
-    );
-  }
+  render(){return(<div></div>);}
 }
 
 export default HomePage;

@@ -3,11 +3,10 @@ import { Meteor } from 'meteor/meteor';
 import {menuActions} from '../imports/collections/menuActions';
 
 Meteor.startup(() => {
-  /*Meteor.publish('menuActions',function(){
-
+  /*Meteor.publish('userInfo',function(){
+    return Meteor.users.find({_id: this.})
   });*/
 
-console.log(this.user);
 
 
 
@@ -56,7 +55,6 @@ console.log(this.user);
   });
 
   Accounts.validateLoginAttempt(function(attempt){
-    console.log(attempt);
     //if user is registering
     if(attempt.methodName === "createUser"){
       //if error in registration
