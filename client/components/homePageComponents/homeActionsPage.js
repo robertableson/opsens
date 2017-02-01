@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
 import Header from '../header/header';
-import ActionMenu from './actionMenu';
+import MenuActionsList from './menuActionsList';
 
 class HomeActionsPage extends Component{
   componentWillMount(){
@@ -14,7 +14,7 @@ class HomeActionsPage extends Component{
     return(
       <div>
         <Header/>
-        <ActionMenu/>
+        <MenuActionsList/>
       </div>
     );
   }

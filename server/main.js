@@ -1,30 +1,36 @@
 import { Meteor } from 'meteor/meteor';
 
-import {menuActions} from '../imports/collections/menuActions';
+import {MenuActions} from '../imports/collections/menuActions';
 
 Meteor.startup(() => {
-  /*Meteor.publish('userInfo',function(){
-    return Meteor.users.find({_id: this.})
-  });*/
+  Meteor.publish('menuActions',function(){
+    //console.log(Meteor.user());
 
+    if(this.userId){
+      var user = Meteor.users.findOne(this.userId);
+
+      return MenuActions.find({user_userType: user.profile.userType});
+    }
+  });
 
 
 
 
   //init of menu
-  /*Meteor.call('menuActions.insert', ["admin"], "Instructions de travail",
+  /*Meteor.call('menuActions.insert', ["administrator",
+    "supervisor"], "Instructions de travail",
     "gestionit", 1);
-  Meteor.call('menuActions.insert', ["admin"], "Produits",
+  Meteor.call('menuActions.insert', ["administrator"], "Produits",
     "gestionit", 2);
-  Meteor.call('menuActions.insert', ["admin"], "Utilisateurs",
+  Meteor.call('menuActions.insert', ["administrator"], "Utilisateurs",
     "gestionit", 3);
-  Meteor.call('menuActions.insert', ["admin"], "Privilèges du menu",
+  Meteor.call('menuActions.insert', ["administrator"], "Privilèges du menu",
     "gestionit", 4);
-  Meteor.call('menuActions.insert', ["admin"], "Commandes",
+  Meteor.call('menuActions.insert', ["administrator"], "Commandes",
     "gestionit", 5);
-  Meteor.call('menuActions.insert', ["admin"], "Production",
-    "gestionit", 6);*/
-
+  Meteor.call('menuActions.insert', ["administrator",
+    "supervisor", "production"], "Production", "gestionit", 6);
+*/
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@ LOGIN / REGISTRATION VALIDATIONS @@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -49,7 +55,7 @@ Meteor.startup(() => {
     const lName = options.lastName.toLowerCase();
 
     user.username = `${fName}.${lName}`;
-    user.profile = {firstName: fName, lastName: lName};
+    user.profile = {firstName: fName, lastName: lName/*, userType: "administrator"*/};
 
     return user;
   });
