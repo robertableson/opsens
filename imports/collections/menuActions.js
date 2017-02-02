@@ -1,12 +1,13 @@
 import {Mongo} from "meteor/mongo";
 
 Meteor.methods({
-  'menuActions.insert': function(userType, title, route, orderNo){
+  'menuActions.insert': function(userType, title, route, orderNo, icon){
     return MenuActions.insert({
       user_userType: userType,
 			title: title,
 			route: route,
-      orderNo: orderNo
+      orderNo: orderNo,
+      icon: icon
     });
   }
 });

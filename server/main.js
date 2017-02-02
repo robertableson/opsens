@@ -19,18 +19,18 @@ Meteor.startup(() => {
   //init of menu
   /*Meteor.call('menuActions.insert', ["administrator",
     "supervisor"], "Instructions de travail",
-    "gestionit", 1);
+    "gestion-it", 1, 'GestITIcon.png');
   Meteor.call('menuActions.insert', ["administrator"], "Produits",
-    "gestionit", 2);
+    "gestion-produits", 2, 'GestProdIcon.png');
   Meteor.call('menuActions.insert', ["administrator"], "Utilisateurs",
-    "gestionit", 3);
+    "gestion-utilisateurs", 3, 'GestUtilsIcon.png');
   Meteor.call('menuActions.insert', ["administrator"], "Privilèges du menu",
-    "gestionit", 4);
+    "gestion-privileges-menu", 4, 'PrivMenuIcon.png');
   Meteor.call('menuActions.insert', ["administrator"], "Commandes",
-    "gestionit", 5);
+    "gestion-commendes", 5, 'GestCommIcon.png');
   Meteor.call('menuActions.insert', ["administrator",
-    "supervisor", "production"], "Production", "gestionit", 6);
-*/
+    "supervisor", "production"], "Production", "production", 6, 'ProdIcon.png');*/
+
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@ LOGIN / REGISTRATION VALIDATIONS @@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

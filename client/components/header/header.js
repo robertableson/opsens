@@ -33,6 +33,10 @@ class Header extends Component{
     });
   }
 
+  gestionCompte(){
+    browserHistory.push('gestion-compte');
+  }
+
   render(){
     const currentUser = this.namesToUpper();
     return(
@@ -62,7 +66,7 @@ class Header extends Component{
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <a href="full-width.html">
+                    <a onClick={this.gestionCompte.bind(this)} href="#">
                       <span className="glyphicon glyphicon-cog" aria-hidden="true">
                       </span>
                       Gestion de mon compte

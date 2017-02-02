@@ -1,30 +1,11 @@
 import React, {Component} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
-import {MenuActions} from '../../../imports/collections/menuActions';
 import ReactDOM from 'react-dom';
 
-const menuAction = ({action}) =>{
-  return(
-    <div className="col-md-6">
-      { action._id }
-    </div>
-  );
-}
+import {MenuActions} from '../../../../imports/collections/menuActions';
 
-const menuActionsRow = ({menuActionTriplet}) =>{
-  console.log('hi');
-  return(
-    /*<div className="row">
-    {
-      menuActionPair.map((action, index) => (
-        <menuAction key={index} action={action}/>
-      ))
-    }
-    </div>*/
-
-    <div>COUOU</div>
-  );
-}
+import MenuActionsRow from './menuActionsRow';
+import Spinner from '../../spinner';
 
 class MenuActionsList extends Component{
   renderList(){
@@ -43,22 +24,13 @@ class MenuActionsList extends Component{
         return triplets;
       }, []);
       return tripletsList.map((triplet, index) => { // every row of the grid
-        <div>row</div>
-        //return (<menuActionsRow key={index} menuActionTriplet={triplet}/>);
-        return triplet.map((menuAction) => {
-          console.log(menuAction);
-          return(<div>element</div>);
-        });
+        return(<MenuActionsRow key={index} menuActionTriplet={triplet}/>);
       });
     }else{
       return(
-        <div>allo</div>
+        <Spinner/>
       );
     }
-
-    /*return this.props.menuActions.map(menuAction =>{
-      console.log(menuAction);
-    });*/
   }
 
   render(){

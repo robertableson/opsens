@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
 import Header from '../header/header';
-import MenuActionsList from './menuActionsList';
+import MenuActionsList from './menuActions/menuActionsList';
 
 class HomeActionsPage extends Component{
   componentWillMount(){
