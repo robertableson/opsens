@@ -1,69 +1,64 @@
 import React, {Component} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import {MenuActions} from '../../../imports/collections/menuActions';
+import ReactDOM from 'react-dom';
+
+const menuAction = ({action}) =>{
+  return(
+    <div className="col-md-6">
+      { action._id }
+    </div>
+  );
+}
+
+const menuActionsRow = ({menuActionTriplet}) =>{
+  console.log('hi');
+  return(
+    /*<div className="row">
+    {
+      menuActionPair.map((action, index) => (
+        <menuAction key={index} action={action}/>
+      ))
+    }
+    </div>*/
+
+    <div>COUOU</div>
+  );
+}
 
 class MenuActionsList extends Component{
   renderList(){
-    const ITEMS_PER_ROW = 3;
-    var numInRow = 0;
+    var menuActionsList = [];
+    var tripletsList = [];
 
-    console.log(this.props.menuActions);
+    if(this.props.menuActions.length > 0){
+      menuActionsList = this.props.menuActions;
 
-    return this.props.menuActions.map(menuAction =>{
-      numInRow++;
+      tripletsList = menuActionsList.reduce((triplets, menuAction, index) => { // split the actions into triplets
+        if(index % 3 === 0) {
+           triplets.push([]);
+        }
+        triplets[triplets.length - 1].push(menuAction);
 
-      /*if(numInRow == 1){ //start row
-        console.log("number one");
+        return triplets;
+      }, []);
+      return tripletsList.map((triplet, index) => { // every row of the grid
+        <div>row</div>
+        //return (<menuActionsRow key={index} menuActionTriplet={triplet}/>);
+        return triplet.map((menuAction) => {
+          console.log(menuAction);
+          return(<div>element</div>);
+        });
+      });
+    }else{
+      return(
+        <div>allo</div>
+      );
+    }
 
-        return(
-          <div className="row">
-            <div className="col-sm-4">
-              <a href="#">
-                <div className="menuAction">
-                  <img className="navbarLogo" src="icons/GestITIcon.png"/>
-                  <br/>
-                  <div className="menuActionText">
-                    {menuAction.title}
-                  </div>
-                </div>
-              </a>
-            </div>
-        );
-      }/*else if(numInRow <= ITEMS_PER_ROW){ //same row
-        return(
-          <div className="col-sm-4">
-            <a href="#">
-              <div className="menuAction">
-                <img className="navbarLogo" src="icons/GestITIcon.png"/>
-                <br/>
-                <div className="menuActionText">
-                  {menuAction.title}
-                </div>
-              </div>
-            </a>
-          </div>
-        );
-      }else{ //last item
-        numInRow = 0;
-
-        return(
-            <div className="col-sm-4">
-              <a href="#">
-                <div className="menuAction">
-                  <img className="navbarLogo" src="icons/GestITIcon.png"/>
-                  <br/>
-                  <div className="menuActionText">
-                    {menuAction.title}
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        );
-      }
-*/
-
-    });
+    /*return this.props.menuActions.map(menuAction =>{
+      console.log(menuAction);
+    });*/
   }
 
   render(){
