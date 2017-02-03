@@ -10,11 +10,20 @@ class HomePage extends Component{
   componentWillMount(){
     if(!Meteor.userId()){
       browserHistory.push('connexion');
-    }else{
-      browserHistory.push('menu');
     }
   }
-  render(){return(<div></div>);}
+
+  render(){
+    return(
+      <div>
+        <Header/>
+        <div className="container">
+            {this.props.children}
+        </div>
+
+      </div>
+    );
+  }
 }
 
 export default HomePage;

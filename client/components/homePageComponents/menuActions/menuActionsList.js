@@ -28,15 +28,18 @@ class MenuActionsList extends Component{
       });
     }else{
       return(
-        <Spinner/>
+        <div className="row">
+          <Spinner/>
+        </div>
       );
     }
   }
 
   render(){
     return(
-      <div className="container">
-          {this.renderList()}
+      <div className="contentsHomeMenu">
+      <h1>Menu principal</h1>
+        {this.renderList()}
       </div>
     );
   }

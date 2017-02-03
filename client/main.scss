@@ -97,31 +97,35 @@ body{
   }
 }
 
-.row{
-  margin-top: 50px;
+.contentsHomeMenu{
+  text-align: center;
 
-  a{
-    text-decoration: none;
-  }
+  .row{
+    margin-top: 50px;
 
-  .col-sm-4{
-    text-align: center;
+    a{
+      text-decoration: none;
+    }
 
-    .menuAction{
-      padding: 20px 10px 0 10px;
-      background-color: #f47a20;
-      font-size: 35px;
-      color:white;
-      transition: background-color 0.5s;
+    .col-sm-4{
+      text-align: center;
 
-      &:hover{
-        background-color: #e76200;
+      .menuAction{
+        padding: 20px 10px 0 10px;
+        background-color: #f47a20;
+        font-size: 35px;
+        color:white;
         transition: background-color 0.5s;
-      }
+
+        &:hover{
+          background-color: #e76200;
+          transition: background-color 0.5s;
+        }
 
 
-      .menuActionText{
-        margin-top: 25px;
+        .menuActionText{
+          margin-top: 25px;
+        }
       }
     }
   }

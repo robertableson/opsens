@@ -10,10 +10,10 @@ class LoginPage extends Component{
 
   componentWillMount(){
     if(Meteor.userId()){
-      browserHistory.push('menu');
+      browserHistory.push('/');
     }
   }
-  
+
   componentWillUnmount(){
     console.log("login unmount");
   }

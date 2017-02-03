@@ -4,17 +4,13 @@ import Header from '../header/header';
 import MenuActionsList from './menuActions/menuActionsList';
 
 class HomeActionsPage extends Component{
-  componentWillMount(){
-    if(!Meteor.userId()){
-      browserHistory.push('connexion');
-    }
-  }
 
   render(){
     return(
       <div>
-        <Header/>
-        <MenuActionsList/>
+        //<Header/>
+        {this.props.children}
+        //<MenuActionsList/>
       </div>
     );
   }

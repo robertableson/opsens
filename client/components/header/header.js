@@ -24,7 +24,7 @@ class Header extends Component{
 
 
   logoClick(){
-    browserHistory.push('menu');
+    browserHistory.push('/');
   }
 
   logout(){
