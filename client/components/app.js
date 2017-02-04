@@ -6,7 +6,7 @@ import HomePage from './homePageComponents/homePage';
 import LoginPage from './homePageComponents/authPage/loginPage';
 import RegisterPage from './homePageComponents/authPage/registerPage';
 import GestionCompte from './gestionCompte';
-import ProductsManager from './productsManager';
+import ProductsManager from './productsManagerComponents/productsManager';
 import MenuActionsList from './homePageComponents/menuActions/menuActionsList';
 
 class App extends Component{

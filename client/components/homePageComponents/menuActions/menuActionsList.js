@@ -38,7 +38,9 @@ class MenuActionsList extends Component{
   render(){
     return(
       <div className="contentsHomeMenu">
-      <h1>Menu principal</h1>
+        <div className="actionPageTitle">
+          <h1>Menu principal</h1>
+        </div>
         {this.renderList()}
       </div>
     );

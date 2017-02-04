@@ -30,7 +30,7 @@ class LoginPage extends Component{
         message: "Le mot de passe doit avoir entre 6 et 20 caractères.",
         messageType: "alert alert-danger"});
     }else{
-      this.setState({message: "Loading...", messageType: "alert alert-info"});
+      this.setState({message: "Chargement...", messageType: "alert alert-info"});
       valid = true;
     }
 

@@ -139,6 +139,14 @@ body{
   }
 }
 
+.actionPage{
+  &>.actionPageTitle{
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+
 //spinner ----------------------------------------------------------------------
 .glyphicon-refresh-animate {
     -animation: spin .7s infinite linear;

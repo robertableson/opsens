@@ -23,7 +23,8 @@ class Header extends Component{
   }
 
 
-  logoClick(){
+  logoClick(e){
+    e.preventDefault();
     browserHistory.push('/');
   }
 
@@ -51,7 +52,7 @@ class Header extends Component{
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a onClick={this.logoClick.bind(this)} className="navbar-brand" href="#">
+            <a onClick={this.logoClick.bind(this)} className="navbar-brand" href="">
               <img className="navbarLogo" src="navbarLogo.png"/>
             </a>
           </div>
