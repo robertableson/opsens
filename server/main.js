@@ -19,17 +19,19 @@ Meteor.startup(() => {
   //init of menu
   /*Meteor.call('menuActions.insert', ["administrator",
     "supervisor"], "Instructions de travail",
-    "gestion-it", 1, 'GestITIcon.png');
-  Meteor.call('menuActions.insert', ["administrator"], "Produits",
-    "gestion-produits", 2, 'GestProdIcon.png');
-  Meteor.call('menuActions.insert', ["administrator"], "Utilisateurs",
-    "gestion-utilisateurs", 3, 'GestUtilsIcon.png');
-  Meteor.call('menuActions.insert', ["administrator"], "Privilèges du menu",
-    "gestion-privileges-menu", 4, 'PrivMenuIcon.png');
+    "gestion-it", 1, 'GestITIcon.png');*/
+  /*Meteor.call('menuActions.insert', ["administrator"], "Produits",
+    "gestion-produits", 1, 'GestProdIcon.png');
   Meteor.call('menuActions.insert', ["administrator"], "Commandes",
-    "gestion-commendes", 5, 'GestCommIcon.png');
+    "gestion-commendes", 2, 'GestCommIcon.png');
   Meteor.call('menuActions.insert', ["administrator",
-    "supervisor", "production"], "Production", "production", 6, 'ProdIcon.png');*/
+    "supervisor", "production"], "Production", "production", 3, 'ProdIcon.png');
+  Meteor.call('menuActions.insert', ["administrator"], "Utilisateurs",
+    "gestion-utilisateurs", 4, 'GestUtilsIcon.png');
+  Meteor.call('menuActions.insert', ["administrator"], "Privilèges",
+    "gestion-privileges-menu", 5, 'PrivMenuIcon.png');*/
+
+
 
   //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   //@@@@@@@@@@@@@@@@@ LOGIN / REGISTRATION VALIDATIONS @@@@@@@@@@@@@@@@@@@@@@@@@@@

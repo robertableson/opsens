@@ -6,7 +6,7 @@ import HomePage from './homePageComponents/homePage';
 import LoginPage from './homePageComponents/authPage/loginPage';
 import RegisterPage from './homePageComponents/authPage/registerPage';
 import GestionCompte from './gestionCompte';
-import GestionIT from './gestionIT';
+import ProductsManager from './productsManager';
 import MenuActionsList from './homePageComponents/menuActions/menuActionsList';
 
 class App extends Component{
@@ -16,7 +16,7 @@ class App extends Component{
         <Route path="/" component={HomePage}>
           <IndexRoute component={MenuActionsList}/>
           <Route path="/gestion-compte" component={GestionCompte}/>
-          <Route path="gestion-it" component={GestionIT}/>
+          <Route path="gestion-produits" component={ProductsManager}/>
         </Route>
         <Route path="/connexion" component={LoginPage}/>
         <Route path="/nouveau-compte" component={RegisterPage}/>

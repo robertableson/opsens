@@ -5,6 +5,7 @@ $primaryColorHover: $primaryColor + #111;
 $primaryColorActive: $primaryColor - #111;
 
 $cardDropShadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+$cardDropShadowHover: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
 
 $navbarHeight: 80px;
 $navbarLogoPadding: (50px-$navbarHeight)/2 0 (50px-$navbarHeight)/2 0 ;
@@ -112,14 +113,21 @@ body{
 
       .menuAction{
         padding: 20px 10px 0 10px;
-        background-color: #f47a20;
+        background-color: $primaryColor;
         font-size: 35px;
         color:white;
         transition: background-color 0.5s;
+        transition: box-shadow 0.5s;
+        box-shadow: $cardDropShadow;
 
         &:hover{
-          background-color: #e76200;
+          background-color: $primaryColorHover;
           transition: background-color 0.5s;
+          transition: box-shadow 0.1s;
+          box-shadow: $cardDropShadowHover;
+        }
+        &:active{
+          background-color: $primaryColorActive;
         }
 
 

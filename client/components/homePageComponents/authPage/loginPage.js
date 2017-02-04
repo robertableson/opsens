@@ -49,7 +49,7 @@ class LoginPage extends Component{
           this.setState({message: err.reason,
             messageType: "alert alert-danger"});
         }else{
-          browserHistory.push('menu');
+          browserHistory.push('');
         }
       });
     }
