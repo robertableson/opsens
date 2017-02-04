@@ -37,7 +37,7 @@ class MenuActionsList extends Component{
 
   render(){
     return(
-      <div className="contentsHomeMenu">
+      <div className="homeMenuContents">
         <div className="actionPageTitle">
           <h1>Menu principal</h1>
         </div>
