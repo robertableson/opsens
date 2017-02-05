@@ -37,32 +37,32 @@ const ProductsManager = () =>{
           <div className="list-group productsList">
             <a href="" className="list-group-item active">
               <div className="row">
-                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
-                <div className="col-xs-2 countBadge">
+                <div className="col-xs-9">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-3 countBadge">
                   <span className="badge badge-default">5</span>
                 </div>
               </div>
             </a>
             <a href="" className="list-group-item">
               <div className="row">
-                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
-                <div className="col-xs-2 countBadge">
+                <div className="col-xs-9">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-3 countBadge">
                   <span className="badge badge-default">54</span>
                 </div>
               </div>
             </a>
             <a href="" className="list-group-item">
               <div className="row">
-                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
-                <div className="col-xs-2 countBadge">
+                <div className="col-xs-9">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-3 countBadge">
                   <span className="badge badge-default">544</span>
                 </div>
               </div>
             </a>
             <a href="" className="list-group-item">
               <div className="row">
-                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
-                <div className="col-xs-2 countBadge">
+                <div className="col-xs-9">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-3 countBadge">
                   <span className="badge badge-default">36</span>
                 </div>
               </div>
@@ -86,17 +86,18 @@ const ProductsManager = () =>{
               </div>
             </div> {/* end .instructionsManagerListHeaderTop */}
             <div className="instructionsManagerListHeaderBottom row">
-              <div className="col-sm-6">
+              <div className="col-sm-4">
                 <input type="text" className="form-control txtSearchInstructions"
                   placeholder="Rechercher"/>
-              </div>
-              <div className="col-sm-6">
                 <select className="form-control ddInstructionsSort">
                   <option value="Alphabétique">Alphabétique</option>
                   <option value="Description">Description</option>
                   <option value="Type production">Type production</option>
                   <option value="Ordre d'IT">Ordre d IT</option>
                 </select>
+              </div>
+
+              <div className="col-sm-4">
                 <select className="form-control ddInstructionsPerPage">
                   <option value="grapefruit">1</option>
                   <option value="lime">2</option>
