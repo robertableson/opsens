@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SortableList from './sortableList';
+import Sortable from 'react-sortablejs';
 
 class InstructionsList extends Component{
   constructor(props){
@@ -14,56 +14,44 @@ class InstructionsList extends Component{
           order: 1
         },
         {
-          _id: "dfsighbsibfibfie7e478b",
+          _id: "dfsighbsibtfibfie7e478b",
           name: "Soudage capteur h4",
           description: "Souder le capter h4 dans le boitier j.",
           user_prodUserType: "Électrique",
           order: 2
         },
         {
-          _id: "dfsighbsibfibfie7e478b",
+          _id: "dfsighbstfibfibfie7e478b",
           name: "Ajustement engrenage tt7",
           description: "Aligner à 4 degrés de jeu l'engrenage tt7 sur le shaft k9.",
           user_prodUserType: "Mécanique",
           order: 3
-        },
+        }
       ]
     };
   }
 
   renderList(){
-    /*var colors = [
-      { title: 'Document #1', order: 0 },
-      { title: 'Document #2', order: 1 },
-      { title: 'Document #3', order: 2 },
-      { title: 'Document #4', order: 3 },
-      { title: 'Document #5', order: 4 },
-      { title: 'Document #6', order: 5 },
-      { title: 'Document #7', order: 6 }
-    ];*/
-
-
-
-    return colors.map(function(item, i){
-      console.log(item.title + ' ' + i);
-      return(
-        <a href="#" key={i} className="list-group-item">allo</a>
+    return this.state.items.map(function(item, i){
+      return (
+        <div  key={item._id} className="list-group-item">
+          <div className="row">
+            <div className="col-xs-9 instructionsListTitle">
+              {item.order}. {item.name} </div>
+            <div className="col-xs-3 instructionsListProdUserType">
+              {item.user_prodUserType}</div>
+          </div>
+          <div className="row">
+            <div className="col-xs-9">{item.description}</div>
+            <div className="col-xs-3 instructionsInputUnit">Saisie: mm</div>
+          </div>
+        </div>
       );
     });
   }
 
   render(){
-    return (
-           <SortableList
-               items={this.state.items}
-               onChange={(items) => {
-                   this.setState({ items });
-               }}
-           >
-           </SortableList>
-       );
-
-    /*return(
+    return(
       <div className="col-sm-8 instructionsListAndInputsContainer">
         <div className="instructionsManagerListHeader">
           <div className="instructionsManagerListHeaderTop row">
@@ -75,7 +63,7 @@ class InstructionsList extends Component{
                 <span className="glyphicon glyphicon-plus" aria-hidden="true"/>
               </button>
             </div>
-          </div> {/* end .instructionsManagerListHeaderTop /}
+          </div> {/* end .instructionsManagerListHeaderTop */}
           <div className="instructionsManagerListHeaderBottom row form-inline">
             <div className="col-xs-10">
               <input type="text" className="form-control txtSearchInstructions"
@@ -96,15 +84,28 @@ class InstructionsList extends Component{
                 <option value="mango">4</option>
               </select>
             </div>
-          </div> {/* end .instructionsManagerListHeaderBottom /}
-        </div> {/* end .instructionsManagerListHeader /}
+          </div> {/* end .instructionsManagerListHeaderBottom */}
+        </div> {/* end .instructionsManagerListHeader */}
         <div className="list-group instructionsList">
-          <Sortable tag="a">
-            {this.renderList()}
+          <Sortable
+              options={{
+                  animation: 150
+              }}
+              className="sortable"
+              ref={c => {
+                console.log(c.sortable);
+                  /*if (c) {
+                      this.simpleList = c.sortable;
+                  }*/
+              }}
+              tag="div"
+          >
+              {this.renderList()}
           </Sortable>
+
         </div>
       </div> // end .instructionsListAndInputsContainer
-    );*/
+    );
   }
 }
 

@@ -234,6 +234,13 @@ body{
     } //end .productsListAndInputsContainer
     .instructionsListAndInputsContainer{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px -20px rgba(0, 0, 0, 0.19);
+
+      .instructionsListTitle{
+        font-weight: bold;
+      }
+      .instructionsListProdUserType, .instructionsInputUnit{
+        text-align: right;
+      }
     }
   } //end .actionPage
 } //end .container
@@ -288,6 +295,6 @@ ul {
 .block-list > * {
     border-bottom: 1px solid #eee;
 }
-.block-list > *:hover {
+.sortable > :hover {
     cursor: move;
 }
