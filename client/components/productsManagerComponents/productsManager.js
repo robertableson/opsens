@@ -85,8 +85,8 @@ const ProductsManager = () =>{
                 </button>
               </div>
             </div> {/* end .instructionsManagerListHeaderTop */}
-            <div className="instructionsManagerListHeaderBottom row">
-              <div className="col-sm-4">
+            <div className="instructionsManagerListHeaderBottom row form-inline">
+              <div className="col-xs-10">
                 <input type="text" className="form-control txtSearchInstructions"
                   placeholder="Rechercher"/>
                 <select className="form-control ddInstructionsSort">
@@ -97,7 +97,7 @@ const ProductsManager = () =>{
                 </select>
               </div>
 
-              <div className="col-sm-4">
+              <div className="col-xs-2">
                 <select className="form-control ddInstructionsPerPage">
                   <option value="grapefruit">1</option>
                   <option value="lime">2</option>
