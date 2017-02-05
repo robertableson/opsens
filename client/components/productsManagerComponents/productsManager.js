@@ -35,13 +35,42 @@ const ProductsManager = () =>{
             </div>
           </div>
           <div className="list-group productsList">
-            <a href="#" className="list-group-item">GLK-13PDF-2DFTR34-PDD345M-M34</a>
-            <a href="#" className="list-group-item active">GLK-13PDF-2DFTR34-PDD345M-M34</a>
-            <a href="#" className="list-group-item">GLK-13PDF-2DFTR34-PDD345M-M34</a>
-            <a href="#" className="list-group-item">GLK-13PDF-2DFTR34-PDD345M-M34</a>
-            <a href="#" className="list-group-item">GLK-13PDF-2DFTR34-PDD345M-M34</a>
+            <a href="" className="list-group-item active">
+              <div className="row">
+                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-2 countBadge">
+                  <span className="badge badge-default">5</span>
+                </div>
+              </div>
+            </a>
+            <a href="" className="list-group-item">
+              <div className="row">
+                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-2 countBadge">
+                  <span className="badge badge-default">54</span>
+                </div>
+              </div>
+            </a>
+            <a href="" className="list-group-item">
+              <div className="row">
+                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-2 countBadge">
+                  <span className="badge badge-default">544</span>
+                </div>
+              </div>
+            </a>
+            <a href="" className="list-group-item">
+              <div className="row">
+                <div className="col-xs-10">GLK-13PDF-2DFTR34-PDD345M-M34</div>
+                <div className="col-xs-2 countBadge">
+                  <span className="badge badge-default">36</span>
+                </div>
+              </div>
+            </a>
           </div>
-
+          <div className="productsPagination">
+            <a href="">{"<<  <  1  2  3  >  >>"}</a>
+          </div>
         </div> {/* end .productsListAndInputsContainer */}
 
         <div className="col-xs-8 instructionsListAndInputsContainer">
@@ -66,6 +95,7 @@ const ProductsManager = () =>{
                   <option value="Alphabétique">Alphabétique</option>
                   <option value="Description">Description</option>
                   <option value="Type production">Type production</option>
+                  <option value="Ordre d'IT">Ordre d IT</option>
                 </select>
                 <select className="form-control ddInstructionsPerPage">
                   <option value="grapefruit">1</option>
