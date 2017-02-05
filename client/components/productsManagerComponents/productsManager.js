@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductsList from './productsList';
 import InstructionsList from './instructionsList';
+import Test from './test';
 
 const ProductsManager = () =>{
   return(
@@ -12,6 +13,7 @@ const ProductsManager = () =>{
         <ProductsList/>
         <InstructionsList/>
       </div> {/* end .row */}
+      <Test/>
     </div> //end .actionPage
   );
 }
