@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductsList from './productsList';
+import ProductsCard from './productsCard';
 import InstructionsList from './instructionsList';
 
 const ProductsManager = () =>{
@@ -9,8 +9,8 @@ const ProductsManager = () =>{
         Gestion des produits
       </div>
       <div className="row">
-        <ProductsList/>
-        <InstructionsList/>
+        <ProductsCard/>
+
       </div> {/* end .row */}
     </div> //end .actionPage
   );

@@ -6,6 +6,9 @@ Meteor.methods({
       name: name,
       instructionsList: instructionsList
     });
+  },
+  'products.deleteAll': function(name, instructionsList){
+    Products.remove({});
   }
 });
 

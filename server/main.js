@@ -20,64 +20,7 @@ Meteor.startup(() => {
     }
   });
 
-
-  //init of products
-  /*Meteor.call('products.insert', "GLX-TP1",
-    [{
-      _id: "dfsighbsibfibfie7e478b",
-      name: "couper tige g45",
-      description: "Utilisaer une tige g45 de 450mm sur la parroie du capteur.",
-      user_prodUserType: "BOP",
-      order: 1
-    },
-    {
-      _id: "dfsighbsibtfibfie7e478b",
-      name: "Soudage capteur h4",
-      description: "Souder le capter h4 dans le boitier j.",
-      user_prodUserType: "Électrique",
-      order: 2
-    },
-    {
-      _id: "dfsighbstfibfibfie7e478b",
-      name: "Ajustement engrenage tt7",
-      description: "Aligner à 4 degrés de jeu l'engrenage tt7 sur le shaft k9.",
-      user_prodUserType: "Mécanique",
-      order: 3
-    }
-  ]
-  );
-  Meteor.call('products.insert', "GLX-TP2",
-    [{
-      _id: "dfsighbsibfibfie7e478b",
-      name: "couper tige g45",
-      description: "Utilisaer une tige g45 de 450mm sur la parroie du capteur.",
-      user_prodUserType: "BOP",
-      order: 1
-    },
-    {
-      _id: "dfsighbsibtfibfie7e478b",
-      name: "Soudage capteur h4",
-      description: "Souder le capter h4 dans le boitier j.",
-      user_prodUserType: "Électrique",
-      order: 2
-    }
-  ]
-);*/
-
-  //init of menu
-  /*Meteor.call('menuActions.insert', ["administrator",
-    "supervisor"], "Instructions de travail",
-    "gestion-it", 1, 'GestITIcon.png');*/
-  /*Meteor.call('menuActions.insert', ["administrator"], "Produits",
-    "gestion-produits", 1, 'GestProdIcon.png');
-  Meteor.call('menuActions.insert', ["administrator"], "Commandes",
-    "gestion-commendes", 2, 'GestCommIcon.png');
-  Meteor.call('menuActions.insert', ["administrator",
-    "supervisor", "production"], "Production", "production", 3, 'ProdIcon.png');
-  Meteor.call('menuActions.insert', ["administrator"], "Utilisateurs",
-    "gestion-utilisateurs", 4, 'GestUtilsIcon.png');
-  Meteor.call('menuActions.insert', ["administrator"], "Privilèges",
-    "gestion-privileges-menu", 5, 'PrivMenuIcon.png');*/
+  initProducts(5, "prod ", 5);  
 
 
 
