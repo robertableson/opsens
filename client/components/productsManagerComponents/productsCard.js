@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import {Products} from '../../../imports/collections/products';
 import ProductsList from './productsList';
+import Spinner from '../spinner';
 
 class ProductsCard extends Component{
   constructor(props){
@@ -30,12 +31,11 @@ class ProductsCard extends Component{
   }
 
   renderList(){
-    /*return (
+    if(this.state.productsList.length == 0){
+      return(<Spinner/>);
+    }
 
-    );this.state.productsList.length > 0 ?
-    return(
-      <ProductsList productsList={this.state.productsList}/>
-    );*/
+    return(<ProductsList productsList={this.state.productsList}/>);
   }
 
   render(){
