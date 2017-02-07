@@ -3,31 +3,34 @@ import {createContainer} from 'meteor/react-meteor-data';
 import {Products} from '../../../imports/collections/products';
 import ProductsList from './productsList';
 import Spinner from '../spinner';
+import Paginator from '../paginator';
+
+import ReactUltimatePagination from 'react-ultimate-pagination';
 
 class ProductsCard extends Component{
   constructor(props){
     super(props);
-    this.state = {productsList: []};
+    this.state = {
+      productsList: [],
+      activePage: 1
+    };
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(this.props.productsList);
     if(this.props.productsList != nextProps){
       this.setState({productsList: nextProps.productsList});
     }
-    console.log(nextProps.productsList);
-    console.log(this.state.productsList);
-
   }
 
   updateFilteredList(){
     var filter = this.refs.txtFilter.value;
 
-    console.log(filter);
+    this.setState({productsList: Products.find(
+      {name: {$regex : `.*${filter}.*`}}).fetch()});
+  }
 
-    this.setState({productsList: Products.find({name: {$regex : `.*${filter}.*`}}).fetch()});
-
-    console.log(this.state.productsList);
+  onPageChange(pageNumber){
+    this.setState({activePage: pageNumber});
   }
 
   renderList(){
@@ -70,7 +73,8 @@ class ProductsCard extends Component{
         </div>
         {this.renderList()}
         <div className="productsPagination">
-          <a href="">{"<<  <  1  2  3  >  >>"}</a>
+          {/*<a href="">{"<<  <  1  2  3  >  >>"}</a>*/}
+          <Paginator max={10} maxVisible={3} onChange={this.onPageChange.bind(this)}/>
         </div>
       </div> // end .productsListAndInputsContainer
     );
@@ -79,6 +83,5 @@ class ProductsCard extends Component{
 
 export default createContainer(() =>{
   Meteor.subscribe('products');
-  //console.log(this.state.productsList);
   return {productsList: Products.find({}).fetch()};
 }, ProductsCard);

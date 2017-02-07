@@ -298,3 +298,11 @@ ul {
 .sortable > :hover {
     cursor: move;
 }
+
+//Pagination------------------------------------------------------------------------
+.pagination{
+  & > ul{
+    background-color: red;
+  }
+  color: red;
+}
