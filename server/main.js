@@ -20,7 +20,7 @@ Meteor.startup(() => {
     }
   });
 
-  initProducts(5, "prod ", 50);  
+  initProducts(50, "prod ", 50);  
 
 
 

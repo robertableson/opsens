@@ -7,8 +7,11 @@ Meteor.methods({
       instructionsList: instructionsList
     });
   },
-  'products.deleteAll': function(name, instructionsList){
+  'products.deleteAll': function(){
     Products.remove({});
+  },
+  'products.getFilteredList': function(){
+    return Products.find({}).fetch();
   }
 });
 

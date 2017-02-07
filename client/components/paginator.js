@@ -18,34 +18,19 @@ class Paginator extends Component{
             this.props.onChange(this.state.currentPage);
         }
     }
-    /*getDefaultProps() {
-        return {
-            maxVisible: 5
-        };
-    }
-    /*getInitialState() {
-        return {
-            currentPage: 1,
-            items: []
-        };
-    }*/
     goTo(page) {
         this.setState({currentPage: page});
     }
-
-    onClickNext() {
-      var page = this.state.currentPage;
-
-      if (page < this.props.max) {
-          this.goTo(page + 1);
+    onClickFirst() {
+      if(this.state.currentPage > 1) {
+          this.goTo(1);
       }
     }
-    onClickPrev() {
-        if (this.state.currentPage > 1) {
-            this.goTo(this.state.currentPage - 1);
+    onClickLast() {
+        if (this.state.currentPage < this.props.max) {
+            this.goTo(this.props.max);
         }
     }
-
   render(){
     var className = this.props.className || '',
         p = this.props,
@@ -64,9 +49,9 @@ class Paginator extends Component{
 
     return (
         <nav>
-            <ul className={'pagination ' + className}>
+            <ul className="pagination">
                 <li className={s.currentPage === 1 ? 'disabled' : ''}>
-                    <a href="#" onClick={this.onClickPrev.bind(this)}>
+                    <a href="#" onClick={this.onClickFirst.bind(this)}>
                         <span aria-hidden="true">&laquo;</span>
                         <span className="sr-only">Prev</span>
                     </a>
@@ -81,7 +66,7 @@ class Paginator extends Component{
                     );
                 }, this)}
                 <li className={s.currentPage === p.max ? 'disabled' : ''}>
-                    <a href="#" onClick={this.onClickNext.bind(this)}>
+                    <a href="#" onClick={this.onClickLast.bind(this)}>
                         <span aria-hidden="true">&raquo;</span>
                         <span className="sr-only">Next</span>
                     </a>

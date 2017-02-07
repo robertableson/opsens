@@ -24,9 +24,14 @@ class ProductsCard extends Component{
 
   updateFilteredList(){
     var filter = this.refs.txtFilter.value;
+    var number = this.refs.ddNumberPerPage.value;
+
+    console.log(number);
 
     this.setState({productsList: Products.find(
-      {name: {$regex : `.*${filter}.*`}}).fetch()});
+      {name: {$regex : `.*${filter}.*`}}, {sort: {name: 1}, limit: this.refs.ddNumberPerPage.value}).fetch()});
+
+      //this.setState({productsList: Meteor.call('products.getFilteredList')});
   }
 
   onPageChange(pageNumber){
@@ -62,7 +67,7 @@ class ProductsCard extends Component{
                 placeholder="Rechercher"/>
             </div>
             <div className="col-sm-6">
-              <select className="form-control ddProductsPerPage">
+              <select ref="ddNumberPerPage" onChange={this.updateFilteredList.bind(this)} className="form-control ddProductsPerPage">
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="40">40</option>
@@ -73,7 +78,6 @@ class ProductsCard extends Component{
         </div>
         {this.renderList()}
         <div className="productsPagination">
-          {/*<a href="">{"<<  <  1  2  3  >  >>"}</a>*/}
           <Paginator max={10} maxVisible={3} onChange={this.onPageChange.bind(this)}/>
         </div>
       </div> // end .productsListAndInputsContainer
@@ -83,5 +87,6 @@ class ProductsCard extends Component{
 
 export default createContainer(() =>{
   Meteor.subscribe('products');
-  return {productsList: Products.find({}).fetch()};
+  return {productsList: Products.find({}, {sort: {name: 1}, limit: 5}).fetch()};
+  //return {productsList: Meteor.call('products.getFilteredList')};
 }, ProductsCard);

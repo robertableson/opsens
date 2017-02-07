@@ -21,7 +21,6 @@ initProducts = function(prodQty, prodPrefix, instQty){
     }
 
     prodTitle = prodPrefix + i;
-
     Meteor.call('products.insert', prodTitle, instructionsList);
 
     instructionsList = [];
