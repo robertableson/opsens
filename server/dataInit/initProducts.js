@@ -1,6 +1,18 @@
 //init of products
 
 initProducts = function(prodQty, prodPrefix, instQty){
+  function generateName()
+  {
+    var text = "";
+    //var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var possible = "abcdefghijklmnopqrstuvwxyz0123456789-";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  }
+
   Meteor.call('products.deleteAll');
 
   function getRandom(min, max) {
@@ -20,7 +32,7 @@ initProducts = function(prodQty, prodPrefix, instQty){
       instructionsList.push({name: "name"});
     }
 
-    prodTitle = prodPrefix + i;
+    prodTitle = generateName();
     Meteor.call('products.insert', prodTitle, instructionsList);
 
     instructionsList = [];
