@@ -16,13 +16,24 @@ class ProductsCard extends Component{
 
   onFilterChange(){
     this.setState({
-      filter: this.refs.txtFilter.value,
-      numberPerPage: this.refs.ddNumberPerPage
+      filter: this.refs.txtFilter.value
+    });
+  }
+
+  onNumberPerPageChange(){
+    this.setState({
+      numberPerPage: parseInt(this.refs.ddNumberPerPage.value)
     });
   }
 
   onPageChange(pageNumber){
     this.setState({activePage: pageNumber});
+  }
+
+  addNew(){
+    this.setState({
+      numberPerPage: this.state.numberPerPage + 5
+    });
   }
 
   render(){
@@ -34,7 +45,8 @@ class ProductsCard extends Component{
               Produits
             </div>
             <div className="col-sm-6">
-              <button className="btn btn-info btnCreateNewProduct">
+              <button onClick={this.addNew.bind(this)}
+                className="btn btn-info btnCreateNewProduct">
                 <span className="glyphicon glyphicon-plus" aria-hidden="true"/>
               </button>
             </div>
@@ -46,7 +58,7 @@ class ProductsCard extends Component{
                 placeholder="Rechercher"/>
             </div>
             <div className="col-sm-6">
-              <select ref="ddNumberPerPage" onChange={this.onFilterChange.bind(this)} className="form-control ddProductsPerPage">
+              <select ref="ddNumberPerPage" onChange={this.onNumberPerPageChange.bind(this)} className="form-control ddProductsPerPage">
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="40">40</option>

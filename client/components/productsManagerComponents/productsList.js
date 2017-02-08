@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {createContainer} from 'meteor/react-meteor-data';
 import {Products} from '../../../imports/collections/products';
+import Spinner from '../spinner';
 
 class ProductsList extends Component{
   componentWillReceiveProps(nextProps){
@@ -10,7 +11,7 @@ class ProductsList extends Component{
   renderList(){
     var productsList = [];
 
-    if(this.props.productsList && this.props.productsList.length > 0){
+    if(this.props.productsList && this.props.productsList.length > 0){      
       productsList = this.props.productsList;
 
       return productsList.map(function(product, i){
@@ -27,7 +28,7 @@ class ProductsList extends Component{
         );
       });
     }else{
-      return(<div>allo</div>);
+      return(<Spinner/>);
     }
   }
 

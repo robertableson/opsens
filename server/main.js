@@ -16,9 +16,11 @@ Meteor.startup(() => {
   Meteor.publish('products',function(filter, numberPerPage, pageNumber){
     if(this.userId){
       var user = Meteor.users.findOne(this.userId);
+      console.log(numberPerPage);
+      console.log("-----------------------------------------------------------------------------------------");
       var skip = numberPerPage * (pageNumber - 1);
 
-      console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber}  skip: ${skip}`);
+      //console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber}  skip: ${skip}`);
 
       return Products.find(
         {
@@ -33,7 +35,7 @@ Meteor.startup(() => {
 
 
 
-  initProducts(50, "prod ", 1);
+  initProducts(50, "prod ", 0);
 
 
 
