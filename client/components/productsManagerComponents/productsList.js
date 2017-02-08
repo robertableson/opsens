@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
+import {createContainer} from 'meteor/react-meteor-data';
+import {Products} from '../../../imports/collections/products';
 
 class ProductsList extends Component{
+  componentWillReceiveProps(nextProps){
+  console.log("Allo");
+  }
+
   renderList(){
     var productsList = [];
 
-    if(this.props.productsList.length > 0){
+    if(this.props.productsList && this.props.productsList.length > 0){
       productsList = this.props.productsList;
 
       return productsList.map(function(product, i){
@@ -20,6 +26,8 @@ class ProductsList extends Component{
           </a>
         );
       });
+    }else{
+      return(<div>allo</div>);
     }
   }
 
@@ -32,4 +40,11 @@ class ProductsList extends Component{
   }
 }
 
-export default ProductsList;
+export default createContainer((props) =>{
+  console.log(`filter: ${props.filter}  numberPerPage: ${props.numberPerPage}  activePage: ${props.activePage}`);
+
+  //Meteor.subscribe('products', '', INITIAL_NUMBER_PER_PAGE, INITIAL_PAGE_NUMBER);
+  Meteor.subscribe('products', props.filter, props.numberPerPage, props.activePage);
+  return {productsList: Products.find({}).fetch()};
+  //return {productsList: Meteor.call('products.getFilteredList')};
+}, ProductsList);

@@ -13,14 +13,27 @@ Meteor.startup(() => {
     }
   });
 
-  Meteor.publish('products',function(){
+  Meteor.publish('products',function(filter, numberPerPage, pageNumber){
     if(this.userId){
       var user = Meteor.users.findOne(this.userId);
-      return Products.find({});
+      var skip = numberPerPage * (pageNumber - 1);
+
+      console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber}  skip: ${skip}`);
+
+      return Products.find(
+        {
+          name: {$regex : `.*${filter}.*`}
+        },
+        {
+          sort: {name: 1}, limit: numberPerPage, skip: skip
+        }
+      );
     }
   });
 
-  initProducts(50, "prod ", 0);  
+
+
+  initProducts(50, "prod ", 1);
 
 
 

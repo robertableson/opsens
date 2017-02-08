@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {createContainer} from 'meteor/react-meteor-data';
-import {Products} from '../../../imports/collections/products';
 import ProductsList from './productsList';
-import Spinner from '../spinner';
 import Paginator from '../paginator';
 
 import ReactUltimatePagination from 'react-ultimate-pagination';
@@ -11,52 +8,21 @@ class ProductsCard extends Component{
   constructor(props){
     super(props);
     this.state = {
-      productsList: [],
+      filter: "",
+      numberPerPage: 10,
       activePage: 1
     };
   }
 
-  componentWillReceiveProps(nextProps){
-    if(this.props.productsList != nextProps){
-      this.setState({productsList: nextProps.productsList});
-    }
-  }
-
-
-  updateList(filter, numberPerPage, pageNumber){
-    /*this.setState({productsList: Products.find(
-      {/*name: {$regex : `.*${filter}.*`}/}, {sort: {name: 1}, limit: 5, skip: page}).fetch()});*/
-
-    var skip = numberPerPage * (pageNumber - 1);
-    filter = filter.toLowerCase();
-
-console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber}  skip: ${skip}`);
-    this.setState({activePage: pageNumber, productsList: Products.find(
-      {name: {$regex : `.*${filter}.*`}}, {sort: {name: 1}, limit: 10, skip: skip}).fetch()});
-  }
-
   onFilterChange(){
-    var filter = this.refs.txtFilter.value;
-    var numberPerPage = this.refs.ddNumberPerPage.value;
-    var pageNumber = this.state.activePage;
-
-    this.updateList(filter, numberPerPage, pageNumber);
+    this.setState({
+      filter: this.refs.txtFilter.value,
+      numberPerPage: this.refs.ddNumberPerPage
+    });
   }
 
   onPageChange(pageNumber){
-    var filter = this.refs.txtFilter.value;
-    var numberPerPage = this.refs.ddNumberPerPage.value;
-
-    this.updateList(filter, numberPerPage, pageNumber);
-  }
-
-  renderList(){
-    if(this.state.productsList.length == 0){
-      return(<Spinner/>);
-      updateFilteredList()
-    }
-
-    return(<ProductsList productsList={this.state.productsList}/>);
+    this.setState({activePage: pageNumber});
   }
 
   render(){
@@ -89,7 +55,11 @@ console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber
             </div>
           </div>
         </div>
-        {this.renderList()}
+        <ProductsList
+          filter={this.state.filter}
+          numberPerPage={this.state.numberPerPage}
+          activePage={this.state.activePage}
+        />
         <div className="productsPagination">
           <Paginator max={10} maxVisible={3} onChange={this.onPageChange.bind(this)}/>
         </div>
@@ -98,8 +68,4 @@ console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber
   }
 }
 
-export default createContainer(() =>{
-  Meteor.subscribe('products');
-  return {productsList: Products.find({}, {sort: {name: 1}, limit: 10}).fetch()};
-  //return {productsList: Meteor.call('products.getFilteredList')};
-}, ProductsCard);
+export default ProductsCard;
