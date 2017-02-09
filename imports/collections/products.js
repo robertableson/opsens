@@ -10,8 +10,10 @@ Meteor.methods({
   'products.deleteAll': function(){
     Products.remove({});
   },
-  'products.getFilteredList': function(){
-    return Products.find({}).fetch();
+  'products.getCollectionSize': function(){
+    var total = Products.find({}).count();
+    console.log("-- " + total);
+    return(total);
   }
 });
 

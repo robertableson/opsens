@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import ProductsList from './productsList';
 import Paginator from '../paginator';
+import {createContainer} from 'meteor/react-meteor-data';
+import Spinner from '../spinner';
 
-import ReactUltimatePagination from 'react-ultimate-pagination';
+const MAX_PAGINATION_NUMBERS = 3;
+var size = 0;
 
 class ProductsCard extends Component{
   constructor(props){
@@ -10,18 +13,21 @@ class ProductsCard extends Component{
     this.state = {
       filter: "",
       numberPerPage: 10,
-      activePage: 1
+      activePage: 1,
+      collectionSize: 50
     };
   }
 
   onFilterChange(){
     this.setState({
+      activePage: 1,
       filter: this.refs.txtFilter.value
     });
   }
 
   onNumberPerPageChange(){
     this.setState({
+      activePage: 1,
       numberPerPage: parseInt(this.refs.ddNumberPerPage.value)
     });
   }
@@ -31,9 +37,13 @@ class ProductsCard extends Component{
   }
 
   addNew(){
-    this.setState({
-      numberPerPage: this.state.numberPerPage + 5
+    console.log("new");
+  }
+
+  getTotalProducts(){
+    Meteor.call('products.getCollectionSize', function(error, result){
     });
+
   }
 
   render(){
@@ -53,12 +63,15 @@ class ProductsCard extends Component{
           </div>
           <div className="productsManagerListHeaderBottom row">
             <div className="col-sm-6">
-              <input ref="txtFilter" onChange={this.onFilterChange.bind(this)} type="text"
-                className="form-control txtSearchProducts"
+              <input ref="txtFilter" onChange={this.onFilterChange.bind(this)}
+                type="text" className="form-control txtSearchProducts"
                 placeholder="Rechercher"/>
             </div>
             <div className="col-sm-6">
-              <select ref="ddNumberPerPage" onChange={this.onNumberPerPageChange.bind(this)} className="form-control ddProductsPerPage">
+              <select ref="ddNumberPerPage"
+                onChange={this.onNumberPerPageChange.bind(this)}
+                className="form-control ddProductsPerPage"
+              >
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="40">40</option>
@@ -73,11 +86,20 @@ class ProductsCard extends Component{
           activePage={this.state.activePage}
         />
         <div className="productsPagination">
-          <Paginator max={10} maxVisible={3} onChange={this.onPageChange.bind(this)}/>
+          <Paginator
+            max={Math.ceil(this.props.collSize / this.state.numberPerPage)}
+            maxVisible={MAX_PAGINATION_NUMBERS}
+            onChange={this.onPageChange.bind(this)}
+          />
         </div>
       </div> // end .productsListAndInputsContainer
     );
   }
 }
 
-export default ProductsCard;
+export default createContainer(() =>{
+  Meteor.call('products.getCollectionSize', function(error, result){
+    size = result;
+  });
+  return {collSize: size};
+}, ProductsCard);

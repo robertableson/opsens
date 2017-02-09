@@ -4,14 +4,10 @@ import {Products} from '../../../imports/collections/products';
 import Spinner from '../spinner';
 
 class ProductsList extends Component{
-  componentWillReceiveProps(nextProps){
-  console.log("Allo");
-  }
-
   renderList(){
     var productsList = [];
 
-    if(this.props.productsList && this.props.productsList.length > 0){      
+    if(this.props.productsList && this.props.productsList.length > 0){
       productsList = this.props.productsList;
 
       return productsList.map(function(product, i){
@@ -42,10 +38,6 @@ class ProductsList extends Component{
 }
 
 export default createContainer((props) =>{
-  console.log(`filter: ${props.filter}  numberPerPage: ${props.numberPerPage}  activePage: ${props.activePage}`);
-
-  //Meteor.subscribe('products', '', INITIAL_NUMBER_PER_PAGE, INITIAL_PAGE_NUMBER);
   Meteor.subscribe('products', props.filter, props.numberPerPage, props.activePage);
   return {productsList: Products.find({}).fetch()};
-  //return {productsList: Meteor.call('products.getFilteredList')};
 }, ProductsList);

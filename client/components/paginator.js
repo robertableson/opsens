@@ -18,20 +18,24 @@ class Paginator extends Component{
             this.props.onChange(this.state.currentPage);
         }
     }
-    goTo(page) {
+    goTo(page, e) {
+      e.preventDefault();
         this.setState({currentPage: page});
     }
-    onClickFirst() {
+    onClickFirst(e) {
+      e.preventDefault();
       if(this.state.currentPage > 1) {
-          this.goTo(1);
+          this.goTo(1, e);
       }
     }
-    onClickLast() {
+    onClickLast(e) {
         if (this.state.currentPage < this.props.max) {
-            this.goTo(this.props.max);
+            this.goTo(this.props.max, e);
         }
     }
   render(){
+    console.log("props.max: " + this.props.max);
+
     var className = this.props.className || '',
         p = this.props,
         s = this.state,

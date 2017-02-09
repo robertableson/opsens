@@ -16,26 +16,25 @@ Meteor.startup(() => {
   Meteor.publish('products',function(filter, numberPerPage, pageNumber){
     if(this.userId){
       var user = Meteor.users.findOne(this.userId);
-      console.log(numberPerPage);
-      console.log("-----------------------------------------------------------------------------------------");
       var skip = numberPerPage * (pageNumber - 1);
 
-      //console.log(`filter: ${filter}  PerPage: ${numberPerPage}  PageNum: ${pageNumber}  skip: ${skip}`);
-
-      return Products.find(
+      return(Products.find(
         {
           name: {$regex : `.*${filter}.*`}
         },
         {
           sort: {name: 1}, limit: numberPerPage, skip: skip
         }
-      );
+      ));
+    }
+  });
+  Meteor.publish('products.total', function(){
+    if(this.userId){
+      console.log("Allo");
     }
   });
 
-
-
-  initProducts(50, "prod ", 0);
+  initProducts(103, "prod ", 0);
 
 
 
